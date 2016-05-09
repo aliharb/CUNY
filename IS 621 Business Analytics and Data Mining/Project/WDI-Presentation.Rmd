@@ -1,6 +1,6 @@
 ---
-title: "Panel Data World Bank"
-author: "Charley Ferrari"
+title: "The Effects of Foreign Aid on World Development Indicators"
+author: "Charley Ferrari, Christina Taylor, David Stern"
 date: "May 6, 2016"
 output: ioslides_presentation
 ---
@@ -117,27 +117,89 @@ ggplot(wbmodel, aes(x=AidPerCapita, y=IncidenceTuberculosis)) + geom_point() +
 
 ```
 
-## R Markdown
+## Naive Model 
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- This model won't take country into account. We will just consider countries and time periods to be independent observations. In this case, our model takes the form:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+$$ IncidenceTuberculosis = \beta_0 + AidPerCapita \times \beta_1 $$
 
-## Slide with Bullets
+```{r naive, warning=FALSE, message=FALSE}
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+summary(lm(IncidenceTuberculosis ~ AidPerCapita, data=wbmodel))$coefficients
 
-## Slide with R Output
+summary(lm(IncidenceTuberculosis ~ AidPerCapita, data=wbmodel))$adj.r.squared
 
-```{r cars, echo = TRUE}
-summary(cars)
 ```
 
-## Slide with Plot
+- This model performs very poorly, it's pretty obvious we need more information. The negative sign in front of AidPerCapita is good, implying that as aid goes up Tuberculosis rates go down, but it's not significant, and there is a low r-squared.
 
-```{r pressure}
-plot(pressure)
+## Fixed Effects Model
+
+- The form of the fixed effects model in this case is:
+
+$$ IncidenceTuberculosis = \mu + c_i + AidPerCapita \times \beta $$
+
+- The $c_i$ is the fixed effect, with $i$ referring to the country.
+
+- With just fixed effects, this model is equivalent to an lm with Country as a categorical variable (with n countries, n-1 dummy variables.)
+
+```{r fixedEffect, warning=FALSE, message=FALSE}
+
+plm.wbmodel <- plm.data(wbmodel, index=c('Country', 'Year'))
+m3 <- plm(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='within')
+
+summary(m3)$coefficients
+
+testlm <- lm(IncidenceTuberculosis ~ AidPerCapita + Country, data=wbmodel)
+
 ```
+
+## Random Effects Model
+
+- The random effects model assumes that the effect of Country is due to a random variable.
+
+- We wouldn't estimate the variables directly like in a fixed effect model, but would end up estimating the parameters of the random variable. The random effect has to have a mean of 0, so the important parameter being estimated is the variance.
+
+## Random Effects Model
+
+```{r randomEffect, warning=FALSE, message=FALSE}
+
+m4 <- plm(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='random')
+
+summary(m4)$coefficients
+
+#testlm <- lm(IncidenceTuberculosis ~ AidPerCapita + Country, data=wbmodel)
+
+```
+
+- *Ranef doesn't work on random effects models?*
+
+- The coefficient for AidPerCapitaseems similar to what we had in our fixed effects model.
+
+- This model assumes however that the fixed effect isn't correlated with AidPerCapita. We can use a Hausman Test to find out if that's true.
+
+## Hausman Test
+
+```{r Hausman, warning=FALSE, message=FALSE}
+
+phtest(m3, m4)
+
+```
+
+- The Hausman test confirms that we should go with the alternative hypothesis. The random effects model is exhibiting omitted variable bias.
+
+## GLS
+
+```{r GLS, warning=FALSE, message=FALSE}
+
+m5 <- pggls(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='within')
+m6 <- pggls(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='pooling')
+
+```
+
+- CHECK OUT THE R-SQUARED OF M5!!! WE NEED TO EXPLAIN THAT!
+
+- For m6 the r-squared is negative. WHAT
+
+- And, just for fun, I ran a Hausman test on m5 and m6... It says that we should go with the fixed effects (so m5).
 

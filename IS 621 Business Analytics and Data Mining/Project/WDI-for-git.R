@@ -4,9 +4,10 @@ library(ggplot2)
 library(ggthemes)
 library(psychometric)
 library(plm)
+library(lme4)
 
 wb <- WDI(country="all", indicator=c("DT.ODA.ODAT.PC.ZS","SH.TBS.INCD","SE.ADT.LITR.ZS",
-                                     "SP.DYN.LE00.IN"),
+                                     "SP.DYN.LE00.IN", "NY.GDP.PCAP.KD.ZG"),
           start=2005, end=2015, extra=TRUE)
 wb <- filter(wb, income == 'Low income')
 
@@ -26,23 +27,23 @@ wb <- wb %>%
 wbmodel <- wb %>%
   filter(year %in% 2005:2014) %>%
   dplyr::select(country, year, DT.ODA.ODAT.PC.ZS, SH.TBS.INCD, SE.ADT.LITR.ZS,
-                SP.DYN.LE00.IN)
+                SP.DYN.LE00.IN, NY.GDP.PCAP.KD.ZG)
 
 colnames(wbmodel) <- c('Country', 'Year', 'AidPerCapita', 'IncidenceTuberculosis',
-                       'AdultLiteracy', 'LifeExpectancy')
+                       'AdultLiteracy', 'LifeExpectancy', 'GDPPerCap')
 
-ggplot(wbmodel, aes(x=Year, y=LifeExpectancy)) + geom_line() + 
+ggplot(wbmodel, aes(x=Year, y=GDPPerCap)) + geom_line() + 
   facet_wrap( ~ Country) + theme_tufte()
 
 ggplot(wbmodel, aes(x=year, y=SH.TBS.INCD, group=country)) + geom_line() + 
   theme_tufte()
 
-w <- lm(SH.TBS.INCD ~ as.factor(country), data=wbmodel)
+w <- lm(IncidenceTuberculosis ~ as.factor(Country), data=wbmodel)
 summary(w)$r.squared
 
 anova(w)
 
-tmp <- aov(SH.TBS.INCD ~ as.factor(country), data=wbmodel)
+tmp <- aov(IncidenceTuberculosis ~ as.factor(Country), data=wbmodel)
 
 summary(tmp)
 
@@ -50,9 +51,20 @@ ICC1(tmp)
 
 ## Fixed Effects
 
-plm.wbmodel <- plm.data(wbmodel, index=c('country', 'year'))
-m3 <- plm(SH.TBS.INCD ~ DT.ODA.ODAT.PC.ZS, data=plm.wbmodel, method='within')
+plm.wbmodel <- plm.data(wbmodel, index=c('Country', 'Year'))
+m3 <- plm(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='within')
 
 summary(m3)
 
 testlm <- lm(SH.TBS.INCD ~ DT.ODA.ODAT.PC.ZS, data=wbmodel)
+
+## Random EFfects
+
+r1 <- lmer(IncidenceTuberculosis ~ AidPerCapita + (1|Country), data=wbmodel)
+r2 <- update(r1, REML=FALSE)
+
+m4 <- plm(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='random')
+
+phtest(m3, m4)
+
+summary(r1)

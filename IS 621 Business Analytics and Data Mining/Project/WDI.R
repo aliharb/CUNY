@@ -11,6 +11,7 @@ frame <- WDIsearch(string = "Enrol", field = "name", short = TRUE, cache = NULL)
 frame <- WDIsearch(string = "tuberculosis", field = "name", short = TRUE, cache = NULL)
 frame <- WDIsearch(string = "literacy", field = "name", short = TRUE, cache = NULL)
 frame <- WDIsearch(string = "Mortality", field = "name", short = TRUE, cache = NULL)
+frame <- WDIsearch(string = "GDP", field = "name", short = TRUE, cache = NULL)
 
 wb <- WDI(country="all", indicator=c("SE.XPD.TOTL.GB.ZS", "GC.DOD.TOTL.GD.ZS",
                                      "BN.CAB.XOKA.GD.ZS", "SP.POP.DPND", "AG.LND.TOTL.K2",
