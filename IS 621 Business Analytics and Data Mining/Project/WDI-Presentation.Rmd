@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Data is grouped in some way. In our case, we're looking at data across countries. 
 
-- The results of a panel regression speak more in terms of inference than prediction *Is this the right way to say this? I think so...*
+- The results of a panel regression speak more in terms of inference than prediction
 
 - Because of this, it is related to methods not commonly thought of in terms of regression, like ANOVA Part of the analysis is determining how much varience is occurring between groups versus how much varience is occurring within groups.
 
@@ -36,6 +36,7 @@ library(ggthemes)
 library(psychometric)
 library(plm)
 library(dplyr)
+library(knitr)
 
 wb <- WDI(country="all", indicator=c("DT.ODA.ODAT.PC.ZS","SH.TBS.INCD"),
           start=2005, end=2015, extra=TRUE)
@@ -110,6 +111,8 @@ Having an ICC this close to 1 implies what we saw in our plots earlier: The vari
 
 - In looking at development indicators across low income countries, our main research question is how aid affects these outcomes.
 
+## Looking at Aid Per Capita
+
 ```{r plotAid, warning=FALSE, message=FALSE}
 
 ggplot(wbmodel, aes(x=AidPerCapita, y=IncidenceTuberculosis)) + geom_point() + 
@@ -123,13 +126,29 @@ ggplot(wbmodel, aes(x=AidPerCapita, y=IncidenceTuberculosis)) + geom_point() +
 
 $$ IncidenceTuberculosis = \beta_0 + AidPerCapita \times \beta_1 $$
 
+- R-Squared:
+
 ```{r naive, warning=FALSE, message=FALSE}
 
-summary(lm(IncidenceTuberculosis ~ AidPerCapita, data=wbmodel))$coefficients
+#summary(lm(IncidenceTuberculosis ~ AidPerCapita, data=wbmodel))$coefficients
 
-summary(lm(IncidenceTuberculosis ~ AidPerCapita, data=wbmodel))$adj.r.squared
+summary(lm(IncidenceTuberculosis ~ AidPerCapita, data=wbmodel))$r.squared
+
+Variables <- c("Intercept", "AidPerCapita")
+Std.Error <- c(243.84, -0.10)
+t.value <- c(19.34, -0.60)
+pr.t <- c(1.18e-56, 5.46e-01)
+
+df <- data.frame(Variables=Variables,
+                 Std.Error=Std.Error,
+                 t.value=t.value,
+                 pr.t=pr.t)
+
+kable(df)
 
 ```
+
+## Naive Model
 
 - This model performs very poorly, it's pretty obvious we need more information. The negative sign in front of AidPerCapita is good, implying that as aid goes up Tuberculosis rates go down, but it's not significant, and there is a low r-squared.
 
@@ -143,12 +162,16 @@ $$ IncidenceTuberculosis = \mu + c_i + AidPerCapita \times \beta $$
 
 - With just fixed effects, this model is equivalent to an lm with Country as a categorical variable (with n countries, n-1 dummy variables.)
 
+- The Estimate for AidPerCapita is now -0.23, with a p-value of 0.0026.
+
+- Still similar signs, which is good, along with a higher magnitude.
+
 ```{r fixedEffect, warning=FALSE, message=FALSE}
 
 plm.wbmodel <- plm.data(wbmodel, index=c('Country', 'Year'))
 m3 <- plm(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='within')
 
-summary(m3)$coefficients
+#summary(m3)$coefficients
 
 testlm <- lm(IncidenceTuberculosis ~ AidPerCapita + Country, data=wbmodel)
 
@@ -166,15 +189,13 @@ testlm <- lm(IncidenceTuberculosis ~ AidPerCapita + Country, data=wbmodel)
 
 m4 <- plm(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='random')
 
-summary(m4)$coefficients
+#summary(m4)$coefficients
 
 #testlm <- lm(IncidenceTuberculosis ~ AidPerCapita + Country, data=wbmodel)
 
 ```
 
-- *Ranef doesn't work on random effects models?*
-
-- The coefficient for AidPerCapitaseems similar to what we had in our fixed effects model.
+- The coefficient for AidPerCapitaseems similar to what we had in our fixed effects model, at -0.229, with a similar p-value. The variance of the idiosyncratic random effects is 1278.03, whilet he individual random effects is 18649.36
 
 - This model assumes however that the fixed effect isn't correlated with AidPerCapita. We can use a Hausman Test to find out if that's true.
 
@@ -197,9 +218,9 @@ m6 <- pggls(IncidenceTuberculosis ~ AidPerCapita, data=plm.wbmodel, model='pooli
 
 ```
 
-- CHECK OUT THE R-SQUARED OF M5!!! WE NEED TO EXPLAIN THAT!
+- Running a Panel GLS drastically improves the R-Squared: For this model it becomes 0.9375.
 
-- For m6 the r-squared is negative. WHAT
+- More research would need to be done here.
 
-- And, just for fun, I ran a Hausman test on m5 and m6... It says that we should go with the fixed effects (so m5).
+- Bhargava et al has an example of adopting the Durbin Watson test for Panel data.
 
