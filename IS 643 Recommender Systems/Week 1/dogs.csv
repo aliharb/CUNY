@@ -1,0 +1,164 @@
+Breed,Cold tolerance,Ease of training,Energy level,Exercise needs,Friendliness toward other dogs,Friendliness toward other pets,Friendliness toward strangers,Grooming needs,Heat tolerance,Playfullness,Protection ability,Watchdog ability
+Affenpinscher,0,0,2,1,1,1,1,2,1,2,0,2
+Afghan Hound,1,0,0,1,1,1,0,2,1,1,0,2
+Airedale Terrier,1,1,2,1,0,0,1,2,1,2,2,2
+Akita,2,1,1,1,1,1,0,0,0,1,2,2
+Alaskan Malamute,2,0,1,2,0,0,2,1,0,1,1,1
+American Cocker Spaniel,1,2,1,1,2,2,2,2,1,2,0,2
+American Eskimo Dog (Miniature),2,2,1,1,1,2,1,1,0,2,0,2
+American Eskimo Dog (Standard),2,2,1,1,1,2,1,1,0,2,0,2
+American Eskimo Dog (Toy),2,2,1,1,1,2,1,1,0,2,0,2
+American Foxhound,1,0,2,2,2,1,2,0,1,1,0,2
+American Staffordshire Terrier,1,0,1,1,0,0,1,0,1,1,2,2
+American Water Spaniel,1,1,2,1,0,1,0,1,1,2,1,2
+Anatolian Shepherd,2,1,0,1,0,1,0,0,1,1,2,2
+Australian Cattle Dog,1,2,2,2,1,0,0,0,1,2,2,2
+Australian Shepherd,1,2,2,2,1,1,0,1,1,2,2,2
+Australian Terrier,1,0,1,1,1,1,0,1,1,1,0,2
+Basenji,0,0,2,1,0,0,1,0,1,1,0,2
+Basset Hound,1,0,0,0,1,1,1,0,1,0,0,2
+Beagle,1,0,1,1,2,2,2,0,1,1,0,2
+Bearded Collie,2,1,2,2,1,1,1,2,1,2,0,2
+Beauceron,1,2,2,2,0,0,0,0,1,1,2,2
+Bedlington Terrier,1,0,1,1,1,0,2,2,1,1,0,2
+Belgian Malinois,1,2,2,2,1,1,0,0,1,2,2,2
+Belgian Sheepdog,1,2,2,2,1,1,0,1,1,2,2,2
+Belgian Tervuren,1,2,2,2,1,1,0,1,1,2,2,2
+Bernese Mountain Dog,2,2,0,0,1,2,1,1,0,0,0,1
+Bichon Frise,1,2,2,0,2,2,2,2,1,2,0,2
+Black Russian Terrier,2,1,0,1,1,2,0,1,0,0,2,2
+Black and Tan Coonhound,1,0,0,2,1,1,0,0,1,1,1,2
+Bloodhound,1,0,1,1,1,2,1,0,0,0,0,2
+Border Collie,1,2,2,2,1,0,0,1,1,2,1,2
+Border Terrier,1,2,1,1,1,0,1,1,1,1,0,2
+Borzoi,2,1,1,1,1,0,0,1,0,1,1,0
+Boston Terrier,0,1,1,0,1,2,1,0,0,1,0,2
+Bouvier des Flandres,2,1,1,2,1,1,1,2,0,0,2,2
+Boxer,0,1,2,1,1,1,1,0,0,2,1,1
+Briard,1,0,1,2,0,1,0,2,0,1,2,2
+Brittany,1,2,2,2,1,1,2,0,1,2,0,2
+Brussels Griffon,0,1,2,0,1,1,0,2,0,2,0,2
+Bull Terrier,1,0,2,1,0,1,1,0,1,2,2,2
+Bulldog,0,0,0,0,0,2,2,0,0,2,0,0
+Bullmastiff,1,0,0,0,0,2,0,0,0,0,2,2
+Cairn Terrier,1,0,2,1,1,0,0,1,1,1,0,2
+Canaan Dog,1,2,1,2,1,2,0,0,1,1,1,2
+Cardigan Welsh Corgi,1,2,1,0,0,2,1,0,1,1,2,2
+Cavalier King Charles Spaniel,1,2,1,1,0,2,2,1,0,2,0,1
+Chesapeake Bay Retriever,2,1,1,1,1,1,0,0,1,1,1,2
+Chihuahua,0,0,2,0,0,1,0,0,2,0,0,2
+Chinese Crested Dog,0,1,1,0,1,2,2,1,2,2,0,2
+Chinese Shar-Pei,1,0,1,1,0,1,0,0,0,0,2,2
+Chow Chow,2,0,0,0,0,1,0,2,0,0,2,2
+Clumber Spaniel,1,1,0,0,1,2,1,1,0,1,0,0
+Collie,2,1,1,1,1,2,1,2,1,1,1,2
+Curly-Coated Retriever,2,1,1,1,1,2,0,0,1,1,0,2
+Dachshund (Miniature),1,0,2,0,1,0,0,1,1,1,0,2
+Dachshund (Standard),1,0,2,0,1,0,0,1,1,1,0,2
+Dalmatian,0,1,2,1,1,1,1,0,1,1,1,2
+Dandie Dinmont Terrier,1,0,1,1,1,1,0,1,1,1,0,2
+Doberman Pinscher,1,2,2,1,0,1,0,0,1,1,2,2
+English Cocker Spaniel,1,2,1,1,2,2,2,1,1,2,0,2
+English Foxhound,1,0,2,2,2,1,2,0,1,1,0,2
+English Setter,1,1,2,2,1,2,2,1,1,1,0,2
+English Springer Spaniel,1,2,2,2,1,2,2,2,1,2,0,2
+English Toy Spaniel,1,1,0,0,2,2,0,1,0,1,0,2
+Field Spaniel,1,2,2,2,1,2,2,1,1,2,0,2
+Finnish Spitz,2,1,1,1,1,1,0,1,0,1,1,2
+Flat-Coated Retriever,1,2,1,1,1,2,2,0,1,2,0,2
+French Bulldog,1,0,1,0,1,2,0,0,0,1,0,1
+German Pinscher,0,1,2,1,0,0,0,0,2,2,1,2
+German Shepherd Dog,1,2,1,2,0,1,0,0,1,0,2,2
+German Shorthaired Pointer,1,1,2,2,1,0,1,0,1,2,1,2
+German Wirehaired Pointer,1,1,2,2,0,1,0,1,1,2,2,2
+Giant Schnauzer,1,1,1,2,0,0,0,1,1,2,2,2
+Glen of Imaal Terrier,1,1,1,1,0,1,1,0,0,2,0,0
+Golden Retriever,1,2,1,1,2,2,2,1,1,2,0,1
+Gordon Setter,1,1,2,2,0,2,0,1,1,1,1,2
+Great Dane,0,1,0,0,0,0,2,0,0,0,1,2
+Great Pyrenees,2,0,0,1,0,1,0,1,0,0,2,2
+Greater Swiss Mountain Dog,2,2,0,1,1,2,0,0,0,0,1,2
+Greyhound,0,1,0,1,1,0,1,0,0,1,0,2
+Harrier,1,0,2,2,2,1,0,0,1,1,0,2
+Havanese,0,2,2,1,2,2,2,1,1,2,0,2
+Ibizan Hound,0,0,1,1,2,1,1,1,1,1,0,2
+Irish Setter,1,1,2,2,2,2,2,1,1,2,0,2
+Irish Terrier,1,0,1,1,0,0,0,2,1,2,2,2
+Irish Water Spaniel,1,1,1,1,1,1,0,1,1,2,1,2
+Irish Wolfhound,2,0,0,1,1,1,1,1,0,0,0,1
+Italian Greyhound,0,1,2,0,2,2,0,0,2,1,0,1
+Japanese Chin,0,1,1,0,2,2,2,1,0,2,0,2
+Keeshond,2,1,1,1,1,2,2,1,0,1,0,2
+Kerry Blue Terrier,1,0,1,1,0,0,0,2,1,2,2,2
+Komondor,2,1,1,1,0,2,0,1,0,1,2,2
+Kuvasz,2,0,1,2,0,2,0,1,0,1,2,2
+Labrador Retriever,2,2,2,1,2,2,2,0,1,2,0,2
+Lakeland Terrier,1,0,2,1,0,0,0,2,1,2,0,2
+Lhasa Apso,1,0,1,0,1,1,0,2,0,1,0,2
+Lowchen,1,1,1,0,2,2,1,2,1,1,0,2
+Maltese,1,1,2,0,1,1,0,1,0,2,0,2
+Manchester Terrier (Standard),0,0,2,1,1,0,0,0,2,2,0,2
+Manchester Terrier (Toy),0,0,2,0,0,0,0,0,2,2,0,2
+Mastiff,1,1,0,0,1,2,0,0,0,0,2,2
+Miniature Bull Terrier,1,0,2,1,0,1,1,0,1,2,1,2
+Miniature Pinscher,0,0,2,0,0,0,0,0,1,2,0,2
+Miniature Schnauzer,1,1,1,1,1,1,1,1,1,2,0,2
+Neapolitan Mastiff,2,0,0,0,0,0,0,0,0,0,2,2
+Newfoundland,2,1,0,0,2,2,2,1,0,1,2,1
+Norfolk Terrier,1,0,2,1,1,1,1,1,1,1,0,2
+Norwegian Elkhound,2,0,2,1,0,0,1,1,0,2,2,2
+Norwich Terrier,1,1,2,1,1,1,1,1,1,1,0,2
+Nova Scotia Duck Tolling Retriever,2,2,2,2,2,2,1,0,1,2,0,0
+Old English Sheepdog,2,0,1,1,1,2,2,2,0,1,1,1
+Otterhound,2,0,0,1,1,1,2,1,0,1,0,2
+Papillon,0,2,2,0,2,2,2,1,1,2,0,2
+Parson Russell Terrier,1,1,2,2,0,0,1,1,1,2,0,2
+Pekingese,1,0,0,0,1,2,0,2,0,0,0,2
+Pembroke Welsh Corgi,1,2,1,1,1,2,2,0,1,1,2,2
+Petit Basset Griffon Vendeen,1,0,2,1,2,1,2,0,1,2,0,2
+Pharaoh Hound,0,1,1,2,2,0,0,0,1,1,0,2
+Plott,1,0,1,1,0,0,0,0,1,1,2,2
+Pointer,1,1,2,2,2,2,1,0,1,2,1,2
+Polish Lowland Sheepdog,2,2,2,2,1,2,0,2,0,2,2,2
+Pomeranian,1,0,2,0,0,1,0,1,1,2,0,2
+Poodle (Miniature),1,2,2,1,2,1,2,2,1,2,0,2
+Poodle (Standard),1,2,1,2,1,2,1,2,1,2,2,2
+Poodle (Toy),0,2,2,0,1,1,2,2,1,2,0,2
+Portuguese Water Dog,1,1,2,2,1,2,1,2,1,2,1,2
+Pug,1,1,1,0,1,1,0,0,0,2,0,2
+Puli,2,0,2,1,0,1,0,2,0,1,2,2
+Redbone Coonhound,0,0,1,1,2,0,1,0,1,1,0,1
+Rhodesian Ridgeback,1,1,1,1,0,0,0,0,1,1,2,2
+Rottweiler,1,1,1,1,0,0,0,0,0,0,2,2
+Saint Bernard,2,1,0,0,1,2,1,1,0,1,0,0
+Saluki (or Gazelle Hound),0,1,0,1,1,1,0,0,1,1,0,2
+Samoyed,2,0,1,1,1,2,2,1,0,2,0,2
+Schipperke,1,0,2,1,1,1,0,0,0,1,2,2
+Scottish Deerhound,1,0,0,1,2,1,1,1,0,0,0,0
+Scottish Terrier,1,0,1,1,1,1,1,1,0,1,0,2
+Sealyham Terrier,1,0,0,0,1,1,1,1,1,0,0,2
+Shetland Sheepdog,1,2,1,1,2,2,0,2,1,1,0,2
+Shiba Inu,2,0,1,1,0,0,1,1,0,1,1,2
+Shih Tzu,0,0,1,0,2,2,2,2,0,2,0,1
+Siberian Husky,2,0,1,2,1,1,2,1,0,2,0,1
+Silky Terrier,1,1,2,0,1,1,1,1,1,2,0,2
+Skye Terrier,2,1,0,0,0,0,0,1,0,1,0,2
+Smooth Fox Terrier,1,2,2,1,1,0,2,0,1,2,0,2
+Soft Coated Wheaten Terrier,1,1,1,1,1,1,2,2,0,2,0,2
+Spinone Italiano,1,1,1,1,1,2,2,0,1,1,0,2
+Staffordshire Bull Terrier,0,1,1,1,0,1,1,0,0,2,1,1
+Standard Schnauzer,1,1,2,1,0,1,0,2,1,1,2,2
+Sussex Spaniel,1,0,1,1,1,2,1,1,1,1,1,2
+Tibetan Mastiff,2,0,0,0,1,1,0,1,0,1,2,2
+Tibetan Spaniel,1,1,1,0,2,2,0,1,0,1,0,2
+Tibetan Terrier,1,1,1,1,1,1,0,2,1,1,0,2
+Toy Fox Terrier,0,2,2,0,1,1,0,0,1,2,0,2
+Vizsla,0,1,1,1,1,2,2,0,1,2,0,2
+Weimaraner,0,0,2,2,0,0,0,0,1,2,2,2
+Welsh Springer Spaniel,1,1,1,1,1,2,0,1,1,1,0,2
+Welsh Terrier,1,0,1,1,1,0,0,2,1,1,0,2
+West Highland White Terrier,1,2,2,1,1,1,2,2,1,1,0,2
+Whippet,0,1,1,1,2,2,1,0,1,1,0,2
+Wire Fox Terrier,1,2,2,1,0,0,2,2,1,2,0,2
+Wirehaired Pointing Griffon,1,1,2,2,1,1,1,1,0,1,1,2
+Yorkshire Terrier,0,0,2,0,0,0,1,2,1,2,0,2
