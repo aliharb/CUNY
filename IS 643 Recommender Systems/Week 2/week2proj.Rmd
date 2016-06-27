@@ -2,7 +2,7 @@
 title: "week2proj"
 author: "Charley Ferrari"
 date: "June 24, 2016"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
