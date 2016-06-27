@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo=FALSE, warning=FALSE, message=FALSE}
 
 setwd('/Users/Charley/Downloads/cuny/IS 643 Recommender Systems/Week 2')
 
