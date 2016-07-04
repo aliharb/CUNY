@@ -1,0 +1,93 @@
+---
+title: "Project3"
+author: "Charley Ferrari"
+date: "June 30, 2016"
+output: html_document
+---
+
+
+```{r warning=FALSE, echo=FALSE, message=FALSE}
+
+library(recommenderlab)
+
+library(reshape2)
+
+library(ggplot2)
+
+library(plotly)
+
+setwd('/Users/Charley/Downloads/cuny/IS 643 Recommender Systems/Week 3')
+
+```
+
+For this assignment I decided to take a collaborative recommendation dataset (in this case using the Jester5K dataset) and analyzing how the choice of k affects the accuracy measure RMSE. First, I'l take in the data and create a training and test set
+
+
+```{r}
+
+data("Jester5k")
+train <- as(Jester5k[1:100], "matrix")
+
+test <- as(Jester5k[101:105], "matrix")
+
+```
+
+With this, I could use the funkSVD function, and a choice of k ($k \leq 100$) to analyze what happens as I increase k. Note: These functions take long to run, so I am commenting them out of the markdown
+
+```{r}
+
+#kvec <- c()
+#rmsevec <- c()
+
+#applyfun <- function(k){
+#  fsvd <- funkSVD(train, k=k)
+#  r <- fsvd$U %*% t(fsvd$V)
+#  return(RMSE(train,r))
+#}
+
+#kvec <- array(1:100)
+#rmsevec <- apply(kvec,1,applyfun)
+
+#rmseTEST <- c()
+
+#applyfun <- function(k){
+#  fsvd <- funkSVD(train, k=k)
+#  r <- fsvd$U %*% t(fsvd$V)
+#  p <- predict(fsvd, test, verbose = FALSE)
+#  return(RMSE(test,p))
+#}
+
+#rmseTEST <- apply(kvec,1,applyfun)
+
+#data <- data.frame(k = kvec, rmse.train=rmsevec, rmse.test=rmseTEST)
+data <- read.csv('k-rmse.csv')
+JesterJokesBR <- read.csv('jesterjokes.csv')$x
+
+data <- melt(data, id.vars='k', value.name = 'rmse', variable.name = 'group')
+
+plot_ly(data, x=k, y=rmse, group=group)
+
+```
+
+Interestingly, this shows us that the marginal benefits to adding more features goes to 0 at around k = 50. There might be other factors going into the choice of k, the trade off between calculation speed and loss of information, but this graph shows there's not really anything gained from having k greater than 50.
+
+Humor is notoriously difficult to categorize, and something like singular value decomposition might give us an idea of what sort of joke categories matter. Using a lower value of k (in this case, 10) I'll create a scatter plot of two features to try to get an idea of what they could be referring to (hover over the points to display the joke)
+
+```{r}
+
+fsvd <- funkSVD(train, k=10)
+
+v <- fsvd$V
+
+colnames(v) <- paste('feature', 1:10, sep=' ')
+
+v <- data.frame(v)
+
+v$Joke <- JesterJokesBR
+
+
+plot_ly(v, x=feature.1, y=feature.2, text=Joke, mode='markers')
+
+```
+
+Feature 2 is a bit hard to parse, but feature 1 seems to measure how "controversial" a joke is. Jokes with high scores in feature 1 seem to be political or religious in nature for example.
