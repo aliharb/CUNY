@@ -1,0 +1,14 @@
+---
+title: "Week 5 Discussion"
+author: "Charley Ferrari"
+date: "July 14, 2016"
+output: pdf_document
+---
+
+## Recommender based on Del.icio.ous
+
+I've been using some data from Del.icio.ous ([data available here](http://grouplens.org/datasets/hetrec-2011/)) for project 4. Del.icio.ous is a social platform that allows users to tag bookmarks, and search bookmarks that others have tagged. While in the dataset I'm using there's a single "interaction" type, I could imagine multiple interactions being added to this dataset if the recommender was live.
+
+I've been looking at this as a multidimensional collaborative problem (user/user, bookmark/bookmark, or tag/tag similarity.) But, these measures can be enhanced by looking at social interactions. In particular, user to user similarity could be weighted by the interactions between users. 
+
+This is especially useful given how sparse the dataset is, and how potentially little similarity there is between users there could be. It is very easy for users to have no bookmarks and tags in common, but if they've interacted that could be a cue to suggest one users' bookmarks to another.
